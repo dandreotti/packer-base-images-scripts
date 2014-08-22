@@ -1,0 +1,10 @@
+{
+
+  "VM_name":"SL6-6.5-x86_64",
+  "Output_dir":"sl6_65",
+  "ISO_url":"http://mirror3.mirror.garr.it/mirrors/scientific/6.5/x86_64/iso/SL-65-x86_64-2013-12-05-boot.iso",
+  "ISO_checksum":"0ce79ca56c8d959cd81d068d1831c1975ac9d8bb8814fcbde444e7e8581e7029",
+  "ISO_checksum_type":"sha256",
+  "kickstart_file":"kickstart-sl6_x86_64.cfg",
+  "setup_script":"post_setup/setup_el6.sh"
+}

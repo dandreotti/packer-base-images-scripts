@@ -1,0 +1,11 @@
+{
+
+  "VM_name":"CentOS-6.5-x86_64",
+  "Disk_size":"5000",
+  "Output_dir":"centos_65",
+  "ISO_url":"http://mirror3.mirror.garr.it/mirrors/CentOS/6.5/isos/x86_64/CentOS-6.5-x86_64-netinstall.iso",
+  "ISO_checksum":"939fd1d87c11ffe7795324438b85adfb",
+  "kickstart_file":"kickstart-centos6.5_x86_64.cfg",
+  "setup_script":"post_setup/setup_el6.sh"
+
+}

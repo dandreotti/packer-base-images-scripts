@@ -1,0 +1,55 @@
+{
+
+  "variables": {
+  
+    "VM_name":"",
+    "Disk_size":"5000",
+    "Output_dir":"",
+    "ISO_url":"",
+    "ISO_checksum":"",
+    "ISO_checksum_type":"md5",
+    "kickstart_file":"",
+    "setup_script":"post_setup/setup_el6.sh",
+    "root_password":""
+  },
+
+  "builders":
+  [
+    {
+      "type": "qemu",
+      "iso_url": "{{user `ISO_url`}}",
+      "iso_checksum": "{{user `ISO_checksum`}}",
+      "iso_checksum_type": "{{user `ISO_checksum_type`}}",
+      "output_directory": "{{user `Output_dir`}}",
+      "shutdown_command": "shutdown -P now",
+      "disk_size": "{{user `Disk_size`}}",
+      "format": "qcow2",
+      "headless": false,
+      "accelerator": "kvm",
+      "http_directory": "httpdir",
+      "http_port_min": 10082,
+      "http_port_max": 10089,
+      "ssh_host_port_min": 2222,
+      "ssh_host_port_max": 2229,
+      "ssh_username": "root",
+      "ssh_password": "{{user `root_password`}}",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "30m",
+      "vm_name": "{{user `VM_name`}}",
+      "net_device": "virtio-net",
+      "disk_interface": "virtio",
+      "boot_wait": "7s",
+      "boot_command":
+      [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `kickstart_file` }}<wait><enter>"
+      ]
+
+    }
+  ],
+
+  "provisioners": [{
+
+    "type": "shell",
+    "script": "{{user `setup_script`}}"
+  }]
+}
