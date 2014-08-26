@@ -10,7 +10,7 @@
     "ISO_checksum_type":"md5",
     "kickstart_file":"",
     "setup_script":"post_setup/setup_el6.sh",
-    "root_password":""
+    "root_password":"ciccio"
   },
 
   "builders":
@@ -21,7 +21,7 @@
       "iso_checksum": "{{user `ISO_checksum`}}",
       "iso_checksum_type": "{{user `ISO_checksum_type`}}",
       "output_directory": "{{user `Output_dir`}}",
-      "shutdown_command": "shutdown -P now",
+      "shutdown_command": "shutdown -h now",
       "disk_size": "{{user `Disk_size`}}",
       "format": "qcow2",
       "headless": false,
@@ -34,7 +34,7 @@
       "ssh_username": "root",
       "ssh_password": "{{user `root_password`}}",
       "ssh_port": 22,
-      "ssh_wait_timeout": "30m",
+      "ssh_wait_timeout": "90m",
       "vm_name": "{{user `VM_name`}}",
       "net_device": "virtio-net",
       "disk_interface": "virtio",
