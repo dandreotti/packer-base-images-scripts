@@ -21,6 +21,9 @@ while [ $ret -ne 0 ];do rm -rf linux-rootfs-resize;git clone git://github.com/ef
 ret=1
 while [ $ret -ne 0 ];do yum install -y cloud-utils cloud-init parted;ret=$?;echo $ret;sleep 2;done
 
+# enable sudo for users in group "wheel"
+sed -i 's/#\s%wheel\sALL=(ALL)\sNOPASSWD: ALL/ %wheel\t\tALL=(ALL)\tNOPASSWD: ALL/g' /etc/sudoers
+
 # enable user "cloud-user" for sudo
 echo "cloud-user    ALL=(ALL)       NOPASSWD: ALL">>/etc/sudoers
 
